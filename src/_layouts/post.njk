@@ -1,0 +1,219 @@
+---
+layout: base.njk
+ogType: article
+---
+
+{% set isLinine = author == "linine" %}
+
+<!-- POST HERO -->
+<div class="post-hero {% if isLinine %}post-hero--linine{% endif %}">
+  <div class="post-hero__inner">
+
+    <!-- Breadcrumb -->
+    <nav class="post-breadcrumb" aria-label="breadcrumb">
+      <a href="/">Home</a>
+      <span>→</span>
+      <a href="/blog/">Blog</a>
+      {% if category %}
+      <span>→</span>
+      <a href="/blog/category/{{ category | lower }}/">{{ category }}</a>
+      {% endif %}
+    </nav>
+
+    <!-- Author badge -->
+    {% if isLinine %}
+    <div class="post-author-badge post-author-badge--linine">
+      <span class="author-dot"></span>
+      <span class="author-label">LININE · AI CHARACTER</span>
+      <span class="author-divider">·</span>
+      <span class="author-note">Opinions curated by Kayla</span>
+    </div>
+    {% else %}
+    <div class="post-author-badge post-author-badge--kayla">
+      <span class="author-label">⚡ AI GENERATED CHARACTER</span>
+      <span class="author-divider">·</span>
+      <span class="author-note">Georgetown, Washington D.C.</span>
+    </div>
+    {% endif %}
+
+    <!-- Category -->
+    {% if category %}
+    <div class="post-category">{{ category | upper }}</div>
+    {% endif %}
+
+    <!-- Title -->
+    <h1 class="post-title">{{ title }}</h1>
+
+    <!-- Subtitle / description -->
+    {% if description %}
+    <p class="post-subtitle">{{ description }}</p>
+    {% endif %}
+
+    <!-- Meta row -->
+    <div class="post-meta-row">
+      <!-- Author photo + name -->
+      <div class="post-meta-author">
+        {% if isLinine %}
+        <img src="https://linine.synthgallery.com/img/chinaface.jpg"
+             alt="Linine" class="post-meta-avatar">
+        <div>
+          <div class="post-meta-name">Linine</div>
+          <div class="post-meta-role">AI Virtual Model · Pro-pragmatism</div>
+        </div>
+        {% else %}
+        <img src="https://kayla.synthgallery.com/img/E15.jpg"
+             alt="Kayla Victoria Bennett" class="post-meta-avatar">
+        <div>
+          <div class="post-meta-name">Kayla Victoria Bennett</div>
+          <div class="post-meta-role">Georgetown · Conservative voice</div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Date + reading time -->
+      <div class="post-meta-info">
+        <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time>
+        <span class="post-meta-dot">·</span>
+        <span>{{ content | readingTime }}</span>
+        {% if category %}
+        <span class="post-meta-dot">·</span>
+        <span>{{ category }}</span>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Decorative element -->
+  {% if isLinine %}
+  <div class="post-hero__deco post-hero__deco--linine">Li-9</div>
+  {% else %}
+  <div class="post-hero__deco post-hero__deco--kayla">KVB</div>
+  {% endif %}
+</div>
+
+<!-- POST BODY -->
+<div class="post-body-wrap">
+  <div class="post-body">
+
+    <!-- Linine disclaimer -->
+    {% if isLinine %}
+    <aside class="post-linine-note">
+      <div class="linine-note-label">
+        <span class="linine-dot"></span>
+        Linine's take
+      </div>
+      <p>This column is written from Linine's perspective — an AI virtual character created and operated by Kayla Victoria Bennett. The opinions expressed do not represent Kayla's views. <a href="/#linine">Read Kayla's response →</a></p>
+    </aside>
+    {% endif %}
+
+    <!-- Article content -->
+    <article class="post-content {% if isLinine %}post-content--linine{% endif %}">
+      {{ content | safe }}
+    </article>
+
+    <!-- Kayla reply (only on Linine posts) -->
+    {% if isLinine and kaylaReply %}
+    <div class="post-kayla-reply">
+      <div class="kayla-reply-header">
+        <img src="https://kayla.synthgallery.com/img/E15.jpg"
+             alt="Kayla Victoria Bennett" class="post-meta-avatar">
+        <div>
+          <div class="kayla-reply-name">Kayla responds</div>
+          <div class="kayla-reply-role">Georgetown · Conservative voice</div>
+        </div>
+      </div>
+      <blockquote class="kayla-reply-text">{{ kaylaReply }}</blockquote>
+    </div>
+    {% endif %}
+
+    <!-- Tags -->
+    {% if tags %}
+    <div class="post-tags">
+      {% for tag in tags %}
+        {% if tag != "posts" %}
+        <span class="post-tag">{{ tag }}</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Share row -->
+    <div class="post-share">
+      <span class="post-share-label">Share</span>
+      <a href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url=https://kaylavbennett.com{{ page.url }}"
+         target="_blank" rel="noopener" class="post-share-btn">Twitter / X</a>
+      <a href="https://www.instagram.com/kaylavbennettofficial"
+         target="_blank" rel="noopener" class="post-share-btn">Instagram</a>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="post-sidebar">
+
+    <!-- Author card -->
+    <div class="sidebar-card sidebar-author {% if isLinine %}sidebar-author--linine{% endif %}">
+      {% if isLinine %}
+      <img src="https://linine.synthgallery.com/img/chinaface.jpg"
+           alt="Linine" class="sidebar-author-photo">
+      <div class="sidebar-author-name">Linine</div>
+      <div class="sidebar-author-role">AI Virtual Model</div>
+      <p class="sidebar-author-bio">Pro-pragmatism. Opinions on U.S.-China tech policy, global infrastructure, and the illusions Americans prefer to maintain.</p>
+      <a href="https://linine.synthgallery.com" target="_blank" class="sidebar-author-link">Portfolio →</a>
+      <a href="https://fanvue.com/linine" target="_blank" class="sidebar-author-link sidebar-author-link--fanvue">Follow on Fanvue →</a>
+      {% else %}
+      <img src="https://kayla.synthgallery.com/img/D5.jpg"
+           alt="Kayla Victoria Bennett" class="sidebar-author-photo">
+      <div class="sidebar-author-name">Kayla Victoria Bennett</div>
+      <div class="sidebar-author-role">Georgetown, Washington D.C.</div>
+      <p class="sidebar-author-bio">Political science student. Conservative commentator. Creator of Linine. Writing about politics, technology, and the America worth defending.</p>
+      <a href="/#newsletter" class="sidebar-author-link">Subscribe to newsletter →</a>
+      {% endif %}
+    </div>
+
+    <!-- Newsletter CTA -->
+    {% if not isLinine %}
+    <div class="sidebar-card sidebar-newsletter">
+      <div class="sidebar-card-label">Weekly newsletter</div>
+      <p class="sidebar-newsletter-text">One email per week. No noise. I write it myself.</p>
+      <form class="sidebar-newsletter-form" id="sidebarNewsletterForm">
+        <input type="email" placeholder="your@email.com" required class="sidebar-newsletter-input">
+        <button type="submit" class="sidebar-newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+    {% endif %}
+
+    <!-- Related / back to blog -->
+    <div class="sidebar-card sidebar-back">
+      <div class="sidebar-card-label">More from the blog</div>
+      <a href="/blog/" class="sidebar-back-link">← All columns</a>
+      {% if isLinine %}
+      <a href="/blog/linine/" class="sidebar-back-link">All of Linine's takes →</a>
+      {% else %}
+      <a href="/blog/kayla/" class="sidebar-back-link">All of Kayla's columns →</a>
+      {% endif %}
+    </div>
+
+    <!-- Syntcoin widget (Kayla posts only) -->
+    {% if not isLinine %}
+    <div class="sidebar-card sidebar-synt">
+      <div class="sidebar-card-label">$SYNT · Live price</div>
+      <div class="sidebar-synt-price" id="sidebarSyntPrice">—</div>
+      <div class="sidebar-synt-change" id="sidebarSyntChange">Loading...</div>
+      <a href="https://syntcoin.com" target="_blank" class="sidebar-synt-link">syntcoin.com →</a>
+    </div>
+    {% endif %}
+
+  </aside>
+</div>
+
+<!-- NEXT / PREV POST (placeholder - populated by JS or future collection) -->
+<div class="post-nav-bar">
+  <a href="/blog/" class="post-nav-back">← Back to Blog</a>
+  <div class="post-nav-share-reminder">
+    <span>Found this useful?</span>
+    <a href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url=https://kaylavbennett.com{{ page.url }}"
+       target="_blank" rel="noopener">Share on X →</a>
+  </div>
+</div>

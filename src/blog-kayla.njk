@@ -1,0 +1,64 @@
+---
+layout: base.njk
+title: Kayla's Columns
+description: All columns by Kayla Victoria Bennett — politics, technology, and the America worth defending.
+permalink: /blog/kayla/
+---
+
+<div class="blog-index-hero">
+  <div class="blog-index-hero__inner">
+    <div class="blog-index-eyebrow">Georgetown, Washington D.C.</div>
+    <h1 class="blog-index-title">Kayla's <em>Columns</em></h1>
+    <p class="blog-index-sub">Conservative commentary on politics, technology, and American values.</p>
+  </div>
+</div>
+
+<nav class="blog-filter" aria-label="Filter posts">
+  <a href="/blog/" class="blog-filter-btn">All</a>
+  <a href="/blog/kayla/" class="blog-filter-btn active">Kayla</a>
+  <a href="/blog/linine/" class="blog-filter-btn linine-filter">Linine</a>
+</nav>
+
+<div class="blog-posts">
+  <div class="blog-posts-grid fade-in">
+    {% for post in collections.kaylaposts %}
+      {% if loop.first %}
+      <a href="{{ post.url }}" class="blog-post-card featured">
+        <div class="blog-post-cat">{{ post.data.category }} · Featured</div>
+        <div class="blog-post-author-tag kayla-tag">Kayla</div>
+        <h2 class="blog-post-title">{{ post.data.title }}</h2>
+        <p class="blog-post-excerpt">{{ post.data.description }}</p>
+        <div class="blog-post-meta">
+          <time datetime="{{ post.date | machineDate }}">{{ post.date | readableDate }}</time>
+          <span>·</span>
+          <span>{{ post.templateContent | readingTime }}</span>
+        </div>
+      </a>
+      {% elif loop.index <= 3 %}
+      <a href="{{ post.url }}" class="blog-post-card">
+        <div class="blog-post-cat">{{ post.data.category }}</div>
+        <div class="blog-post-author-tag kayla-tag">Kayla</div>
+        <h2 class="blog-post-title">{{ post.data.title }}</h2>
+        <p class="blog-post-excerpt">{{ post.data.description }}</p>
+        <div class="blog-post-meta">
+          <time datetime="{{ post.date | machineDate }}">{{ post.date | readableDate }}</time>
+          <span>·</span>
+          <span>{{ post.templateContent | readingTime }}</span>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.blog-post-author-tag, .blog-list-author-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.kayla-tag { background: var(--navy); color: var(--gold); border: 0.5px solid var(--gold); }
+.linine-tag { background: rgba(74,144,217,0.1); color: var(--linine-accent); border: 0.5px solid rgba(74,144,217,0.3); }
+</style>

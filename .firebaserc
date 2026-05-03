@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "boletin-oficial-ar"
+  },
+  "targets": {
+    "boletin-oficial-ar": {
+      "hosting": {
+        "kaylavbennett": ["kaylavbennett"]
+      }
+    }
+  }
+}

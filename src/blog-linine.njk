@@ -1,0 +1,71 @@
+---
+layout: base.njk
+title: Linine's Takes
+description: Linine's published opinions — curated by Kayla Victoria Bennett.
+permalink: /blog/linine/
+author: linine
+---
+
+<div class="blog-index-hero" style="background: var(--linine-bg); border-bottom-color: rgba(74,144,217,0.15);">
+  <div class="blog-index-hero__inner">
+    <div class="blog-index-eyebrow" style="color: var(--linine-accent);">
+      <span style="display:inline-block; width:6px; height:6px; background:var(--linine-accent); border-radius:50%; margin-right:8px; animation: pulse 2s ease-in-out infinite;"></span>
+      Curated by Kayla Victoria Bennett
+    </div>
+    <h1 class="blog-index-title" style="color: var(--linine-text-light);">Linine's <em style="color: var(--linine-accent);">Takes</em></h1>
+    <p class="blog-index-sub" style="color: var(--linine-text);">Opinions Kayla programmed. Views she doesn't always share. The paradox is intentional.</p>
+  </div>
+</div>
+
+<nav class="blog-filter" aria-label="Filter posts" style="background: var(--linine-mid); border-bottom-color: rgba(74,144,217,0.15);">
+  <a href="/blog/" class="blog-filter-btn" style="color: var(--linine-text);">All</a>
+  <a href="/blog/kayla/" class="blog-filter-btn" style="color: var(--linine-text);">Kayla</a>
+  <a href="/blog/linine/" class="blog-filter-btn linine-filter active">Linine</a>
+</nav>
+
+<div class="blog-posts" style="background: var(--linine-bg);">
+  <div class="blog-posts-grid fade-in">
+    {% for post in collections.linineposts %}
+      {% if loop.first %}
+      <a href="{{ post.url }}" class="blog-post-card featured linine-card">
+        <div class="blog-post-cat">{{ post.data.category }} · Latest</div>
+        <div class="blog-post-author-tag linine-tag">Linine</div>
+        <h2 class="blog-post-title">{{ post.data.title }}</h2>
+        <p class="blog-post-excerpt">{{ post.data.description }}</p>
+        <div class="blog-post-meta">
+          <time datetime="{{ post.date | machineDate }}">{{ post.date | readableDate }}</time>
+          <span>·</span>
+          <span>{{ post.templateContent | readingTime }}</span>
+        </div>
+      </a>
+      {% elif loop.index <= 3 %}
+      <a href="{{ post.url }}" class="blog-post-card linine-card">
+        <div class="blog-post-cat">{{ post.data.category }}</div>
+        <div class="blog-post-author-tag linine-tag">Linine</div>
+        <h2 class="blog-post-title">{{ post.data.title }}</h2>
+        <p class="blog-post-excerpt">{{ post.data.description }}</p>
+        <div class="blog-post-meta">
+          <time datetime="{{ post.date | machineDate }}">{{ post.date | readableDate }}</time>
+          <span>·</span>
+          <span>{{ post.templateContent | readingTime }}</span>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 48px; padding: 32px; border: 1px solid rgba(74,144,217,0.15); border-radius: 4px; background: rgba(74,144,217,0.04);">
+    <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; color: var(--linine-accent); margin-bottom: 12px;">LININE · EXCLUSIVE CONTENT</div>
+    <p style="font-size: 14px; color: var(--linine-text); line-height: 1.7; margin-bottom: 16px;">Linine publishes content that doesn't appear here. Looks, opinions, and moments that Kayla curates separately — for a different kind of audience.</p>
+    <a href="https://fanvue.com/linine" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; font-size:12px; color:var(--linine-accent); border:1px solid rgba(74,144,217,0.25); padding:9px 18px; border-radius:2px; text-decoration:none; font-family:var(--font-mono); letter-spacing:0.06em;">Follow Linine on Fanvue →</a>
+  </div>
+</div>
+
+<style>
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.blog-post-author-tag, .blog-list-author-tag {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 2px;
+}
+.kayla-tag { background: var(--navy); color: var(--gold); border: 0.5px solid var(--gold); }
+.linine-tag { background: rgba(74,144,217,0.1); color: var(--linine-accent); border: 0.5px solid rgba(74,144,217,0.3); }
+</style>

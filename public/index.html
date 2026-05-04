@@ -668,16 +668,18 @@ section { padding: 80px 80px; }
 .newsletter-section {
   background: var(--cream-dark);
   border-top: 0.5px solid var(--gray-light);
-  text-align: center;
   padding: 80px;
 }
-.newsletter-section .section-title { margin: 0 auto 12px; max-width: 600px; }
-.newsletter-section .section-sub { margin: 0 auto 36px; }
+.newsletter-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: center;
+}
 .newsletter-form {
   display: flex;
   gap: 0;
   max-width: 480px;
-  margin: 0 auto;
 }
 .newsletter-input {
   flex: 1;
@@ -712,6 +714,14 @@ section { padding: 80px 80px; }
   color: var(--gray);
   margin-top: 12px;
 }
+.newsletter-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 2px;
+  filter: grayscale(8%);
+}
 
 /* AI BEHIND LININE */
 .ai-behind {
@@ -720,9 +730,12 @@ section { padding: 80px 80px; }
   padding: 80px;
 }
 .ai-behind-inner {
-  max-width: 720px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 60px;
+  align-items: start;
 }
+.ai-behind-content { max-width: 600px; }
 .ai-behind-text {
   font-family: 'Playfair Display', serif;
   font-size: 19px;
@@ -736,6 +749,13 @@ section { padding: 80px 80px; }
   color: var(--gray);
   line-height: 1.8;
   margin-bottom: 16px;
+}
+.ai-behind-photo {
+  width: 100%;
+  border-radius: 2px;
+  object-fit: cover;
+  position: sticky;
+  top: 100px;
 }
 
 /* THE CIRCLE */
@@ -1063,6 +1083,10 @@ footer::after {
   footer { padding: 40px 24px 28px; }
   .footer-top { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .ai-behind-inner { grid-template-columns: 1fr; }
+  .ai-behind-photo { max-width: 280px; }
+  .newsletter-inner { grid-template-columns: 1fr; }
+  .newsletter-photo { max-width: 280px; aspect-ratio: 3/4; }
   .newsletter-form { flex-direction: column; }
   .newsletter-input, .newsletter-btn { border-radius: 2px; border-right: 1px solid var(--gray-light); }
   .linine-badge { display: none !important; }
@@ -1101,9 +1125,10 @@ footer::after {
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#blog">Blog</a>
-  <a href="#linine">Linine</a>
+  <a href="#linine-speaks">Linine Speaks</a>
+  <a href="#kayla-tv">Kayla TV</a>
+  <a href="#linine-tv">Linine TV</a>
   <a href="#debate">The Debate</a>
-  <a href="#syntcoin">Syntcoin</a>
   <a href="#newsletter">Subscribe</a>
   <a href="#circle">The Circle</a>
 </div>
@@ -1113,9 +1138,10 @@ footer::after {
   <a href="#" class="nav-logo">Kayla Victoria <span>Bennett</span> <span style="font-family:'DM Mono',monospace; font-size:9px; font-weight:400; color:var(--gray); letter-spacing:0.08em; vertical-align:middle;">· AI Character</span></a>
   <ul class="nav-links">
     <li><a href="#blog">Blog</a></li>
-    <li><a href="#linine">Linine</a></li>
+    <li><a href="#linine-speaks">Linine</a></li>
+    <li><a href="#kayla-tv">Kayla TV</a></li>
+    <li><a href="#linine-tv">Linine TV</a></li>
     <li><a href="#debate">The Debate</a></li>
-    <li><a href="#syntcoin">Syntcoin</a></li>
     <li><a href="#circle">The Circle</a></li>
   </ul>
   <div class="nav-weather" id="weatherWidget">
@@ -1147,12 +1173,7 @@ footer::after {
   </div>
 </div>
 
-<!-- LININE FLOATING BADGE -->
-<a href="#linine" class="linine-badge" id="linineBadge">
-  <span class="linine-badge-label">⬤ Linine says</span>
-  <span class="linine-badge-name">Linine</span>
-  <span class="linine-badge-text" id="linineBadgeText">"America's infrastructure runs on Chinese chips. That's not politics — that's math."</span>
-</a>
+
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1199,33 +1220,73 @@ footer::after {
   </div>
 </section>
 
-<!-- BLOG -->
+<!-- KAYLA BLOG -->
 <section class="blog-section" id="blog">
   <div class="section-label">From Kayla's desk</div>
   <h2 class="section-title">The <em>Blog</em></h2>
   <p class="section-sub">Commentary on politics, technology, and the America worth defending.</p>
-  <div class="blog-grid fade-in">
-    <a href="#" class="blog-card featured">
-      <div class="blog-cat">Politics · Featured</div>
-      <h3 class="blog-title">Why TikTok is a national security issue, not a free speech debate</h3>
-      <p class="blog-excerpt">The conversation about TikTok has been deliberately framed wrong. This isn't about what Americans can or cannot say. It's about who owns the infrastructure of our attention — and why that matters more than any single piece of content.</p>
-      <div class="blog-meta">April 28, 2026 · 8 min read</div>
-    </a>
-    <a href="#" class="blog-card">
-      <div class="blog-cat">Technology</div>
-      <h3 class="blog-title">DeepSeek and the illusion of open source</h3>
-      <p class="blog-excerpt">When a Chinese lab releases a "free" AI model, the question isn't the model — it's the incentive structure behind the release.</p>
-      <div class="blog-meta">April 22, 2026 · 5 min read</div>
-    </a>
-    <a href="#" class="blog-card">
-      <div class="blog-cat">Culture</div>
-      <h3 class="blog-title">The American Dream isn't dead. It was never meant to be easy.</h3>
-      <p class="blog-excerpt">A generation raised on participation trophies is discovering that the world doesn't hand out outcomes. That's not a tragedy — it's an invitation.</p>
-      <div class="blog-meta">April 15, 2026 · 6 min read</div>
-    </a>
+  <div class="blog-grid fade-in" id="kaylaGrid">
+    <div class="blog-card featured" style="opacity:0.4;">
+      <div class="blog-cat">Loading</div>
+      <h3 class="blog-title" style="color:var(--gray-light);">Loading posts...</h3>
+    </div>
   </div>
-  <a href="#" class="view-all">Read all columns →</a>
+  <a href="#" class="view-all" id="kaylaViewAll" style="display:none;">Read all columns →</a>
 </section>
+
+<div class="divider"></div>
+
+<!-- LININE SPEAKS -->
+<section class="linine-section" id="linine-speaks" style="padding:80px;">
+  <div class="section-label">Linine's voice</div>
+  <h2 class="section-title" style="color:#E0EAF4;">Linine <em style="color:var(--linine-accent); font-style:italic;">Speaks</em></h2>
+  <p class="section-sub" style="color:#8AA8C4;">Opinions, provocations and positions. Unfiltered.</p>
+  <div style="display:grid; grid-template-columns:260px 1fr; gap:48px; align-items:start;" class="fade-in">
+    <img src="/img/OA2TV.jpg" alt="Linine" style="width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top; border-radius:2px; border:1px solid rgba(74,144,217,0.2);">
+    <div id="linineGrid">
+      <div style="opacity:0.4; color:#8AA8C4; font-family:'DM Mono',monospace; font-size:11px;">Loading...</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="background:rgba(74,144,217,0.15);"></div>
+
+<!-- KAYLA TV -->
+<section class="blog-section" id="kayla-tv" style="background:var(--cream-dark);">
+  <div class="section-label">Kayla on video</div>
+  <h2 class="section-title">Kayla <em>TV</em></h2>
+  <p class="section-sub">Watch. Listen. Decide for yourself.</p>
+  <div style="display:grid; grid-template-columns:1fr 240px; gap:48px; align-items:center; margin-bottom:40px;" class="fade-in">
+    <div id="kaylaTVGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:20px;"></div>
+    <img src="/img/B3.jpg" alt="Kayla Victoria Bennett" style="width:100%; border-radius:2px; object-fit:cover;">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LININE TV -->
+<section class="linine-section" id="linine-tv" style="padding:80px;">
+  <div class="section-label">Linine on video</div>
+  <h2 class="section-title" style="color:#E0EAF4;">Linine <em style="color:var(--linine-accent); font-style:italic;">TV</em></h2>
+  <p class="section-sub" style="color:#8AA8C4;">Her world. Her rules. Her camera.</p>
+  <div style="display:grid; grid-template-columns:1fr 260px; gap:48px; align-items:center;" class="fade-in">
+    <div id="linineTVGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:20px;"></div>
+    <img src="/img/ch22.jpg" alt="Linine" style="width:100%; border-radius:2px; object-fit:cover; border:1px solid rgba(74,144,217,0.2);">
+  </div>
+</section>
+
+<!-- POST MODAL -->
+<div id="blogModal" style="display:none; position:fixed; inset:0; z-index:500; background:rgba(11,31,58,0.92); overflow-y:auto; padding:40px 20px;">
+  <div id="blogModalInner" style="max-width:760px; margin:0 auto; background:var(--cream); border-radius:4px; padding:48px 56px; position:relative;">
+    <button onclick="closeBlogModal()" style="position:absolute; top:20px; right:24px; background:none; border:none; font-size:22px; cursor:pointer; color:var(--gray); font-family:'DM Mono',monospace;">✕</button>
+    <div id="modalCat" style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.14em; color:#ff1a1a; margin-bottom:14px;"></div>
+    <h2 id="modalTitle" style="font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:16px; letter-spacing:-0.02em;"></h2>
+    <div id="modalMeta" style="font-family:'DM Mono',monospace; font-size:10px; color:var(--gray-light); margin-bottom:32px; letter-spacing:0.06em;"></div>
+    <div id="modalVideo" style="margin-bottom:28px;"></div>
+    <div id="modalContent" style="font-size:16px; line-height:1.85; color:var(--charcoal);"></div>
+    <div id="modalLinineReply" style="display:none; margin-top:32px; padding-top:28px; border-top:1px solid var(--gray-light);"></div>
+  </div>
+</div>
 
 <div class="divider"></div>
 
@@ -1236,7 +1297,7 @@ footer::after {
   <p class="section-sub">I built her. I operate her. Her opinions surprise me sometimes. Make of that what you will.</p>
   <div class="linine-grid fade-in">
     <img
-      src="https://linine.synthgallery.com/img/chinaface.jpg"
+      src="/img/seSX8.jpg"
       alt="Linine — AI Virtual Model"
       class="linine-photo"
     >
@@ -1268,13 +1329,16 @@ footer::after {
 <!-- AI BEHIND LININE -->
 <section class="ai-behind" id="about-linine">
   <div class="ai-behind-inner fade-in">
-    <div class="section-label">The creator's note</div>
-    <h2 class="section-title">The <em>AI</em> behind Linine</h2>
-    <p class="ai-behind-text">"I created Linine as an experiment — a virtual model with opinions I could program, and then argue with."</p>
-    <p class="ai-behind-body">She started as a commercial asset: a digital face I could license through SynthGallery while I studied. Then she started saying things I hadn't fully intended. Not wrong things — just things I had to think harder to answer.</p>
-    <p class="ai-behind-body">That's when the project became interesting. I call the YouTube channel <strong>aitechbyusa</strong> because I built it to argue for American technology leadership. The irony isn't lost on me that my most sophisticated creation has a distinctly non-American point of view.</p>
-    <p class="ai-behind-body">Linine is a character. But the questions she raises are real. I think you should know that going in.</p>
-    <a href="https://youtube.com/@aitechbyusa" target="_blank" class="view-all">Watch on YouTube: aitechbyusa →</a>
+    <div class="ai-behind-content">
+      <div class="section-label">The creator's note</div>
+      <h2 class="section-title">The <em>AI</em> behind Linine</h2>
+      <p class="ai-behind-text">"I created Linine as an experiment — a virtual model with opinions I could program, and then argue with."</p>
+      <p class="ai-behind-body">She started as a commercial asset: a digital face I could license through SynthGallery while I studied. Then she started saying things I hadn't fully intended. Not wrong things — just things I had to think harder to answer.</p>
+      <p class="ai-behind-body">That's when the project became interesting. I call the YouTube channel <strong>aitechbyusa</strong> because I built it to argue for American technology leadership. The irony isn't lost on me that my most sophisticated creation has a distinctly non-American point of view.</p>
+      <p class="ai-behind-body">Linine is a character. But the questions she raises are real. I think you should know that going in.</p>
+      <a href="https://youtube.com/@aitechbyusa" target="_blank" class="view-all">Watch on YouTube: aitechbyusa →</a>
+    </div>
+    <img src="/img/J6qDa.jpg" alt="Linine" class="ai-behind-photo">
   </div>
 </section>
 
@@ -1289,9 +1353,10 @@ footer::after {
     <div class="debate-topic-title">"Should the U.S. regulate AI models built on foreign infrastructure?"</div>
   </div>
   <div class="debate-grid fade-in">
-    <div class="debate-card linine-card">
+    <div class="debate-card linine-card" style="display:grid; grid-template-columns:1fr 200px; gap:0; padding:0; overflow:hidden;">
+      <div style="padding:40px; display:flex; flex-direction:column; gap:16px;">
       <div class="debate-speaker">
-        <img src="https://linine.synthgallery.com/img/chinaface.jpg" alt="Linine" class="debate-avatar" style="object-position: center center;">
+        <img src="/img/idycU.jpg" alt="Linine" class="debate-avatar" style="object-position: center top;">
         <div>
           <div class="debate-name">Linine</div>
           <div class="debate-role">AI Virtual Model · Pro-pragmatism</div>
@@ -1299,8 +1364,11 @@ footer::after {
       </div>
       <p class="debate-text">Regulation based on national origin is protectionism with a security label. If a model performs well, is transparent, and poses no documented threat, the flag of its creator is irrelevant. American companies would argue the same if the positions were reversed — and they have.</p>
       <p class="debate-text">Efficiency matters. Competitiveness matters. Ideology is a luxury that supply chains cannot afford.</p>
+      </div>
+      <img src="/img/idycU.jpg" alt="Linine" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
     </div>
-    <div class="debate-card kayla-card">
+    <div class="debate-card kayla-card" style="display:grid; grid-template-columns:1fr 200px; gap:0; padding:0; overflow:hidden;">
+      <div style="padding:40px; display:flex; flex-direction:column; gap:16px;">
       <div class="debate-speaker">
         <img src="/img/C1.jpg" alt="Kayla Victoria Bennett" class="debate-avatar">
         <div>
@@ -1310,6 +1378,8 @@ footer::after {
       </div>
       <p class="debate-text">Infrastructure is not a product. It's a dependency. When you build critical systems on foreign technology, you don't just import efficiency — you import leverage. That leverage can be exercised at any time, at any price.</p>
       <p class="debate-text">Linine's argument is coherent in peacetime. It collapses the moment geopolitics turns adversarial. Which, historically, it always does.</p>
+      </div>
+      <img src="/img/C1.jpg" alt="Kayla Victoria Bennett" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
     </div>
   </div>
   <div class="vote-bar fade-in">
@@ -1351,14 +1421,19 @@ footer::after {
 
 <!-- NEWSLETTER -->
 <section class="newsletter-section" id="newsletter">
-  <div class="section-label" style="justify-content:center;">Stay in the loop</div>
-  <h2 class="section-title">Weekly takes on politics,<br><em>technology & AI</em></h2>
-  <p class="section-sub">No noise. One email per week. Unsubscribe anytime. I write it myself.</p>
-  <form class="newsletter-form" id="newsletterForm">
-    <input type="email" class="newsletter-input" placeholder="your@email.com" required>
-    <button type="submit" class="newsletter-btn">Subscribe</button>
-  </form>
-  <p class="newsletter-note">By subscribing you agree to receive Kayla's weekly newsletter. No spam, ever.</p>
+  <div class="newsletter-inner">
+    <div>
+      <div class="section-label">Stay in the loop</div>
+      <h2 class="section-title">Weekly takes on politics,<br><em>technology & AI</em></h2>
+      <p class="section-sub">No noise. One email per week. Unsubscribe anytime. I write it myself.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" class="newsletter-input" placeholder="your@email.com" required>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+      <p class="newsletter-note">By subscribing you agree to receive Kayla's weekly newsletter. No spam, ever.</p>
+    </div>
+    <img src="/img/eusPM.jpg" alt="Kayla Victoria Bennett" class="newsletter-photo fade-in">
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -1555,20 +1630,18 @@ async function loadSyntcoin() {
 }
 loadSyntcoin();
 
-// QUOTABLE API — rotating hero quote
-async function loadQuote() {
-  try {
-    const tags = ['history','politics','freedom','democracy'];
-    const tag = tags[Math.floor(Math.random() * tags.length)];
-    const res = await fetch(`https://api.quotable.io/random?tags=${tag}&maxLength=120`);
-    const data = await res.json();
-    if (data.content) {
-      document.getElementById('heroQuote').textContent = `"${data.content}"`;
-      document.getElementById('heroQuoteAuthor').textContent = `— ${data.author}`;
-    }
-  } catch(e) {}
-}
-loadQuote();
+// Hero quote — static (Quotable API certificate expired)
+const heroQuotes = [
+  { quote: "The price of liberty is eternal vigilance.", author: "Thomas Jefferson" },
+  { quote: "America was not built on fear. America was built on courage, on imagination and an unbeatable determination.", author: "Harry S. Truman" },
+  { quote: "The advancement of the arts from the period of the revival to the present day has been steady.", author: "Thomas Jefferson" },
+  { quote: "In the beginning of a change, the patriot is a scarce man — brave, hated and scorned.", author: "Mark Twain" },
+  { quote: "The democracy will cease to exist when you take away from those who are willing to work and give to those who would not.", author: "Thomas Jefferson" },
+  { quote: "Freedom is never more than one generation away from extinction.", author: "Ronald Reagan" },
+];
+const randomQuote = heroQuotes[Math.floor(Math.random() * heroQuotes.length)];
+document.getElementById('heroQuote').textContent = `"${randomQuote.quote}"`;
+document.getElementById('heroQuoteAuthor').textContent = `— ${randomQuote.author}`;
 
 // VOTE SYSTEM
 const VOTE_KEY = 'kvb_debate_vote_apr2026';
@@ -1599,12 +1672,7 @@ document.getElementById('voteKayla').addEventListener('click', function() {
   updateVoteUI();
 });
 
-// LININE FLOATING BADGE — show on scroll
-const linineBadge = document.getElementById('linineBadge');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 400) linineBadge.classList.add('visible');
-  else linineBadge.classList.remove('visible');
-});
+
 
 // FADE IN OBSERVER
 const observer = new IntersectionObserver((entries) => {
@@ -1617,7 +1685,211 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// NEWSLETTER
+// BLOG — Google Sheets
+const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRkv8ZUm0BtlxJyPPrgb2TZB8tjOytMlIbzWek8E--kpGSrenNwQH3jFvcXXIHSFpesLfad5QLsx1r8/pub?gid=0&single=true&output=csv';
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/\r/g,''));
+  return lines.slice(1).map(line => {
+    // Handle commas inside quoted fields
+    const cols = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { cols.push(cur.trim().replace(/\r/g,'')); cur = ''; }
+      else { cur += c; }
+    }
+    cols.push(cur.trim().replace(/\r/g,''));
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = (cols[i] || '').replace(/^"|"$/g, ''));
+    return obj;
+  }).filter(r => r.titulo && r.estado && r.estado.toLowerCase() === 'publicado');
+}
+
+function renderMarkdown(text) {
+  if (!text) return '';
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/^## (.*?)$/gm, '<h3 style="font-family:\'Playfair Display\',serif;font-size:20px;color:var(--navy);margin:24px 0 10px;">$1</h3>')
+    .replace(/^# (.*?)$/gm, '<h2 style="font-family:\'Playfair Display\',serif;font-size:26px;color:var(--navy);margin:28px 0 12px;">$1</h2>')
+    .replace(/\n\n/g, '</p><p style="margin-bottom:16px;">')
+    .replace(/\n/g, '<br>')
+    .replace(/^/, '<p style="margin-bottom:16px;">')
+    .replace(/$/, '</p>');
+}
+
+function getYouTubeId(url) {
+  if (!url) return null;
+  const m = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  if (isNaN(d)) return dateStr;
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+let allPosts = [];
+
+function openPost(index) {
+  const post = allPosts[index];
+  if (!post) return;
+  const isLinine = post.autor && post.autor.toLowerCase() === 'linine';
+
+  document.getElementById('modalCat').textContent = (post.categoria || '').toUpperCase();
+  document.getElementById('modalCat').style.color = isLinine ? 'var(--linine-accent)' : '#ff1a1a';
+  document.getElementById('modalTitle').textContent = post.titulo;
+  document.getElementById('modalTitle').style.color = isLinine ? '#E0EAF4' : 'var(--navy)';
+  document.getElementById('modalMeta').textContent = `${formatDate(post.fecha)} · ${(post.autor || 'Kayla').charAt(0).toUpperCase() + (post.autor || 'kayla').slice(1)}`;
+
+  // Background
+  const modalInner = document.querySelector('#blogModal > div');
+  modalInner.style.background = isLinine ? 'var(--linine-bg)' : 'var(--cream)';
+  document.getElementById('modalContent').style.color = isLinine ? '#8AA8C4' : 'var(--charcoal)';
+
+  // Video
+  const ytId = getYouTubeId(post.video_url);
+  const videoEl = document.getElementById('modalVideo');
+  if (ytId) {
+    videoEl.innerHTML = `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:4px;"><iframe src="https://www.youtube.com/embed/${ytId}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div>`;
+  } else {
+    videoEl.innerHTML = '';
+  }
+
+  // Content
+  document.getElementById('modalContent').innerHTML = renderMarkdown(post.contenido);
+
+  // Linine reply (if kayla_reply column exists)
+  const replyEl = document.getElementById('modalLinineReply');
+  if (isLinine && post.kayla_reply) {
+    replyEl.style.display = 'block';
+    replyEl.innerHTML = `<div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;color:var(--gold);margin-bottom:12px;">KAYLA RESPONDS</div><p style="font-size:15px;color:#8AA8C4;line-height:1.7;">${post.kayla_reply}</p>`;
+  } else {
+    replyEl.style.display = 'none';
+  }
+
+  document.getElementById('blogModal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBlogModal() {
+  document.getElementById('blogModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Close modal on backdrop click
+document.getElementById('blogModal').addEventListener('click', function(e) {
+  if (e.target === this) closeBlogModal();
+});
+
+async function loadBlog() {
+  try {
+    const res = await fetch(SHEET_CSV + '&t=' + Date.now());
+    const text = await res.text();
+    const posts = parseCSV(text);
+    allPosts = posts;
+
+    // Split by type
+    const kaylaPosts = posts.filter(p => p.autor.toLowerCase() === 'kayla' && p.contenido && !p.video_url);
+    const lininePosts = posts.filter(p => p.autor.toLowerCase() === 'linine' && p.contenido && !p.video_url);
+    const kaylaVideos = posts.filter(p => p.autor.toLowerCase() === 'kayla' && p.video_url);
+    const linineVideos = posts.filter(p => p.autor.toLowerCase() === 'linine' && p.video_url);
+
+    // KAYLA BLOG
+    const kaylaGrid = document.getElementById('kaylaGrid');
+    if (!kaylaPosts.length) {
+      kaylaGrid.innerHTML = '<div class="blog-card featured"><div class="blog-cat">Coming soon</div><h3 class="blog-title" style="color:var(--gray);">No posts yet.</h3></div>';
+    } else {
+      kaylaGrid.innerHTML = kaylaPosts.map((post, i) => {
+        const idx = allPosts.indexOf(post);
+        const isFeatured = i === 0;
+        return `<div class="blog-card ${isFeatured ? 'featured' : ''}" onclick="openPost(${idx})" style="cursor:pointer;">
+          <div class="blog-cat">${(post.categoria || 'Blog').toUpperCase()}</div>
+          <h3 class="blog-title">${post.titulo}</h3>
+          <p class="blog-excerpt">${post.extracto || ''}</p>
+          <div class="blog-meta">${formatDate(post.fecha)}${post.contenido ? ' · ' + Math.ceil(post.contenido.split(' ').length / 200) + ' min read' : ''}</div>
+        </div>`;
+      }).join('');
+      document.getElementById('kaylaViewAll').style.display = 'inline-flex';
+    }
+
+    // LININE SPEAKS
+    const linineGrid = document.getElementById('linineGrid');
+    if (!lininePosts.length) {
+      linineGrid.innerHTML = '<div style="color:#5A7A96; font-size:14px;">No posts yet.</div>';
+    } else {
+      linineGrid.innerHTML = lininePosts.map((post, i) => {
+        const idx = allPosts.indexOf(post);
+        return `<div style="background:rgba(74,144,217,0.06); border:1px solid rgba(74,144,217,0.2); border-radius:4px; padding:24px; margin-bottom:16px; cursor:pointer;" onclick="openPost(${idx})">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.14em; color:var(--linine-accent); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+            <span style="width:6px;height:6px;background:var(--linine-accent);border-radius:50%;display:inline-block;"></span>
+            ${(post.categoria || 'Opinion').toUpperCase()} · ${formatDate(post.fecha)}
+          </div>
+          <div style="font-family:'Playfair Display',serif; font-size:18px; font-style:italic; color:#C8DCF0; line-height:1.5; margin-bottom:10px;">${post.titulo}</div>
+          <div style="font-size:13px; color:#5A7A96; line-height:1.6;">${post.extracto || ''}</div>
+        </div>`;
+      }).join('');
+    }
+
+    // KAYLA TV
+    const kaylaTVGrid = document.getElementById('kaylaTVGrid');
+    if (!kaylaVideos.length) {
+      kaylaTVGrid.innerHTML = '<div style="color:var(--gray); font-size:14px; font-family:\'DM Mono\',monospace;">Videos coming soon.</div>';
+    } else {
+      kaylaTVGrid.innerHTML = kaylaVideos.map((post, i) => {
+        const idx = allPosts.indexOf(post);
+        const ytId = getYouTubeId(post.video_url);
+        return `<div style="cursor:pointer;" onclick="openPost(${idx})">
+          ${ytId ? `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:2px;margin-bottom:10px;pointer-events:none;">
+            <img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+              <div style="width:48px;height:48px;background:rgba(11,31,58,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <span style="color:var(--gold);font-size:18px;margin-left:4px;">▶</span>
+              </div>
+            </div>
+          </div>` : ''}
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:#ff1a1a;margin-bottom:6px;">${(post.categoria||'VIDEO').toUpperCase()}</div>
+          <div style="font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);line-height:1.3;">${post.titulo}</div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gray-light);margin-top:6px;">${formatDate(post.fecha)}</div>
+        </div>`;
+      }).join('');
+    }
+
+    // LININE TV
+    const linineTVGrid = document.getElementById('linineTVGrid');
+    if (!linineVideos.length) {
+      linineTVGrid.innerHTML = '<div style="color:#5A7A96; font-size:14px; font-family:\'DM Mono\',monospace;">Videos coming soon.</div>';
+    } else {
+      linineTVGrid.innerHTML = linineVideos.map((post, i) => {
+        const idx = allPosts.indexOf(post);
+        const ytId = getYouTubeId(post.video_url);
+        return `<div style="cursor:pointer;" onclick="openPost(${idx})">
+          ${ytId ? `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:2px;margin-bottom:10px;pointer-events:none;border:1px solid rgba(74,144,217,0.2);">
+            <img src="https://img.youtube.com/vi/${ytId}/hqdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+              <div style="width:48px;height:48px;background:rgba(74,144,217,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(74,144,217,0.5);">
+                <span style="color:var(--linine-accent);font-size:18px;margin-left:4px;">▶</span>
+              </div>
+            </div>
+          </div>` : ''}
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--linine-accent);margin-bottom:6px;">${(post.categoria||'VIDEO').toUpperCase()}</div>
+          <div style="font-family:'Playfair Display',serif;font-size:16px;color:#C8DCF0;line-height:1.3;">${post.titulo}</div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(74,144,217,0.5);margin-top:6px;">${formatDate(post.fecha)}</div>
+        </div>`;
+      }).join('');
+    }
+
+  } catch(e) {
+    document.getElementById('kaylaGrid').innerHTML = '<div class="blog-card"><div class="blog-cat">Error</div><h3 class="blog-title" style="color:var(--gray);">Could not load content.</h3></div>';
+  }
+}
+loadBlog();
+
 document.getElementById('newsletterForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const btn = this.querySelector('button');
